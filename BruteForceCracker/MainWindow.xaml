@@ -1,12 +1,54 @@
 ﻿<Window x:Class="BruteForceCracker.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BruteForceCracker"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Multithreaded Brute Force Cracker" Height="600" Width="800">
 
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="1. Target Password Setup" Grid.Row="0" Margin="0,0,0,15" Padding="10">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="BtnGenerate" Content="Generate Secret Password" Width="180" Height="30" Click="BtnGenerate_Click"/>
+                <TextBlock x:Name="TxtTargetInfo" Text="Password not generated yet." VerticalAlignment="Center" Margin="15,0,0,0" Foreground="Gray" FontWeight="SemiBold"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="2. Brute Force Actions" Grid.Row="1" Margin="0,0,0,15" Padding="10">
+            <UniformGrid Columns="2" Rows="1">
+                <Button x:Name="BtnStart" Content="Start Brute-Force" Height="35" Margin="5,0" Background="#E1F5FE" FontWeight="Bold" Click="BtnStart_Click"/>
+                <Button x:Name="BtnStop" Content="Stop Attack" Height="35" Margin="5,0" Background="#FFEBEE" FontWeight="Bold" IsEnabled="False" Click="BtnStop_Click"/>
+            </UniformGrid>
+        </GroupBox>
+
+        <GroupBox Header="3. Real-Time Status" Grid.Row="2" Margin="0,0,0,15" Padding="10">
+            <StackPanel>
+                <Grid Margin="0,0,0,5">
+                    <TextBlock Text="Combinations Attempted:" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="TxtCount" Text="0" HorizontalAlignment="Right" FontWeight="Bold"/>
+                </Grid>
+                <ProgressBar x:Name="ProgressIndicator" Height="20" Minimum="0" Maximum="100" IsIndeterminate="False" Margin="0,0,0,10"/>
+
+                <Grid Margin="0,5">
+                    <TextBlock Text="Elapsed Time:" HorizontalAlignment="Left"/>
+                    <TextBlock x:Name="TxtTime" Text="00:00:00.000" HorizontalAlignment="Right" FontWeight="Bold" FontFamily="Consolas"/>
+                </Grid>
+
+                <Separator Margin="0,10"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+                    <TextBlock Text="FOUND PASSWORD: " FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="TxtResult" Text="???" FontSize="18" FontWeight="Black" Foreground="Green" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Header="4. Performance Benchmarks (Single vs. Multi-Thread)" Grid.Row="3" Padding="5">
+            <TextBox x:Name="TxtLog" IsReadOnly="True" VerticalScrollBarVisibility="Auto" FontFamily="Consolas" Background="#F9F9F9" Text="Logs will appear here after execution completes..."/>
+        </GroupBox>
     </Grid>
 </Window>
