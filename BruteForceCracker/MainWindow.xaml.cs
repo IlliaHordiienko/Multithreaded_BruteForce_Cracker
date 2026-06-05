@@ -4,6 +4,9 @@ namespace BruteForceCracker
 {
     public partial class MainWindow : Window
     {
+        // Stores targeted hash value to crack
+        private string _targetHash = string.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -11,7 +14,12 @@ namespace BruteForceCracker
 
         private void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
-            TxtTargetInfo.Text = "Target generated! (Hash placeholder)";
+            string secretPassword = PasswordManager.GenerateRandomPassword();
+            _targetHash = PasswordManager.ComputeHash(secretPassword);
+
+            // Updates display with length and truncated hash information
+            TxtTargetInfo.Text = $"Target set! Length: {secretPassword.Length} | Hash: {_targetHash.Substring(0, 15)}...";
+            TxtTargetInfo.Foreground = System.Windows.Media.Brushes.DarkGreen;
         }
 
         private void BtnStart_Click(object sender, RoutedEventArgs e)

@@ -11,3 +11,8 @@ An asynchronous C# WPF application designed to demonstrate the performance diffe
 ### Stage 2: Graphical User Interface Design
 - Designed user interface layout with necessary progress controls and status displays.
 - Added foundational event hooks in MainWindow.xaml.cs for execution control.
+
+### Stage 3: Cryptography and Password Setup
+- Created `PasswordManager` class for isolated logic.
+- Implemented SHA-256 hashing with a constant static salt.
+- Configured random password generator strictly bound to [4-6) character limits.
