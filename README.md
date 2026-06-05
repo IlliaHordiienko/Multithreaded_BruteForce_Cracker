@@ -16,3 +16,7 @@ An asynchronous C# WPF application designed to demonstrate the performance diffe
 - Created `PasswordManager` class for isolated logic.
 - Implemented SHA-256 hashing with a constant static salt.
 - Configured random password generator strictly bound to [4-6) character limits.
+
+### Stage 4: Brute-Force Core Logic
+- Developed independent `PasswordValidator` class to decouple validation from generation.
+- Implemented recursive `BruteForceGenerator` covering character lengths from 1 to 6 sequentially.
