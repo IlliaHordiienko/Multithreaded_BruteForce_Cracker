@@ -25,3 +25,8 @@ An asynchronous C# WPF application designed to demonstrate the performance diffe
 - Implemented `RunMultiThreaded` workflow utilizing `Parallel.ForEach` data partitioning.
 - Configured hardware constraints limiting maximum concurrent threads to `Environment.ProcessorCount - 1`.
 - Added state interception checks ensuring all threads terminate immediately upon verification of the matched hash.
+
+### Stage 6: Performance Benchmarking
+- Bound asynchronous execution controllers to interface button events via async/await thread tasks.
+- Integrated thread-safe UI scheduling updates tracking operations per second and elapsed stopwatch periods.
+- Programmed text formatting engines to log data output tracking single versus multi-threaded performance speedups.
