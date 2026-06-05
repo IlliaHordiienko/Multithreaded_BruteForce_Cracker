@@ -20,3 +20,8 @@ An asynchronous C# WPF application designed to demonstrate the performance diffe
 ### Stage 4: Brute-Force Core Logic
 - Developed independent `PasswordValidator` class to decouple validation from generation.
 - Implemented recursive `BruteForceGenerator` covering character lengths from 1 to 6 sequentially.
+
+### Stage 5: Multi-Threading Engine
+- Implemented `RunMultiThreaded` workflow utilizing `Parallel.ForEach` data partitioning.
+- Configured hardware constraints limiting maximum concurrent threads to `Environment.ProcessorCount - 1`.
+- Added state interception checks ensuring all threads terminate immediately upon verification of the matched hash.
